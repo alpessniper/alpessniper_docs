@@ -62,6 +62,7 @@
         "signals/understanding-signals",
         "signals/signal-types",
         "signals/signal-metrics",
+        "signals/ai-optimization",
         "signals/premium-signals"
       ]
     },
