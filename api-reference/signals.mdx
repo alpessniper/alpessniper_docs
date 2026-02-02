@@ -1,0 +1,206 @@
+---
+title: Signals Endpoint
+description: "Fetch real-time and historical signals"
+---
+
+## Get Signals
+
+Retrieve a list of signals with optional filtering.
+
+```
+GET /v1/signals
+```
+
+### Query Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `type` | string | Filter by signal type: `new`, `3d`, `7d`, `30d`, `wallet`, `premium` |
+| `status` | string | Filter by status: `active`, `winner`, `dead`, `rugged` |
+| `since` | string | ISO 8601 timestamp - only signals after this time |
+| `limit` | integer | Number of results (default: 20, max: 100) |
+| `page` | integer | Page number for pagination |
+
+### Example Request
+
+```bash
+curl -X GET "https://api.alpessniper.com/v1/signals?type=new&limit=10" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+### Example Response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "sig_abc123",
+      "token": {
+        "symbol": "EXAMPLE",
+        "name": "Example Token",
+        "contract": "ExampLe...Address",
+        "age_hours": 24
+      },
+      "metrics": {
+        "mcap_entry": 50000,
+        "mcap_current": 150000,
+        "volume_24h": 25000,
+        "holders": 500,
+        "liquidity": 30000
+      },
+      "performance": {
+        "roi": 200,
+        "ath_roi": 300,
+        "status": "winner"
+      },
+      "type": "new",
+      "is_premium": false,
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "meta": {
+    "total": 150,
+    "page": 1,
+    "per_page": 10,
+    "total_pages": 15
+  }
+}
+```
+
+---
+
+## Get Single Signal
+
+Retrieve details for a specific signal.
+
+```
+GET /v1/signals/{signal_id}
+```
+
+### Example Request
+
+```bash
+curl -X GET "https://api.alpessniper.com/v1/signals/sig_abc123" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+### Example Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "sig_abc123",
+    "token": {
+      "symbol": "EXAMPLE",
+      "name": "Example Token",
+      "contract": "ExampLe...Address",
+      "age_hours": 24,
+      "dex_paid": true,
+      "socials": {
+        "twitter": "https://twitter.com/example",
+        "telegram": "https://t.me/example",
+        "website": "https://example.com"
+      }
+    },
+    "metrics": {
+      "mcap_entry": 50000,
+      "mcap_current": 150000,
+      "mcap_ath": 200000,
+      "volume_24h": 25000,
+      "holders": 500,
+      "liquidity": 30000
+    },
+    "performance": {
+      "roi": 200,
+      "ath_roi": 300,
+      "time_to_ath_hours": 48,
+      "status": "winner"
+    },
+    "type": "new",
+    "is_premium": false,
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2024-01-17T10:30:00Z"
+  }
+}
+```
+
+---
+
+## Get Performance Stats
+
+Retrieve aggregated performance statistics.
+
+```
+GET /v1/signals/stats
+```
+
+### Query Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `type` | string | Filter by signal type |
+| `period` | string | Time period: `24h`, `7d`, `30d`, `all` |
+
+### Example Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "total_signals": 1500,
+    "winners": 450,
+    "win_rate": 30,
+    "avg_roi": 85,
+    "best_roi": 1500,
+    "by_type": {
+      "new": { "total": 500, "winners": 120, "win_rate": 24 },
+      "3d": { "total": 400, "winners": 140, "win_rate": 35 },
+      "wallet": { "total": 300, "winners": 120, "win_rate": 40 }
+    }
+  }
+}
+```
+
+---
+
+## Webhooks
+
+Subscribe to real-time signal notifications.
+
+```
+POST /v1/webhooks
+```
+
+### Request Body
+
+```json
+{
+  "url": "https://your-server.com/webhook",
+  "events": ["signal.new", "signal.winner"],
+  "types": ["new", "premium"]
+}
+```
+
+### Webhook Payload
+
+When a new signal is generated:
+
+```json
+{
+  "event": "signal.new",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "data": {
+    "id": "sig_xyz789",
+    "token": {...},
+    "metrics": {...},
+    "type": "new",
+    "is_premium": true
+  }
+}
+```
+
+<Note>
+  Webhook endpoints must return a 200 status code within 5 seconds. Failed deliveries are retried 3 times.
+</Note>

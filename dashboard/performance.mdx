@@ -1,0 +1,75 @@
+---
+title: Performance
+description: "Track signal performance and historical metrics"
+---
+
+## Overview
+
+The **Performance** section provides detailed analytics on signal outcomes, helping you understand historical performance across different signal types.
+
+## Key Metrics
+
+### Win Rate
+
+Percentage of signals that reached **2x or higher** from entry market cap.
+
+```
+Win Rate = (Winners / Total Signals) × 100%
+```
+
+### Average ROI
+
+The mean return across all signals in the selected period.
+
+### Best ROI
+
+The highest single return achieved by any signal.
+
+## Filtering Options
+
+Filter performance data by:
+- **Signal Type**: All, Engine, Wallet, Premium
+- **Time Period**: 24h, 7d, 30d, All Time
+- **Status**: Winners, Active, Dead, All
+
+## Understanding the Data
+
+### Winner
+Token reached 2x+ from entry market cap
+
+### Active
+Still trading, hasn't reached 2x yet
+
+### Dead
+Dropped significantly with no recovery (typically < $15K market cap)
+
+### Rugged
+Liquidity removed or project abandoned
+
+## Performance Chart
+
+The chart shows:
+- Cumulative performance over time
+- Win rate trends
+- Signal volume by category
+
+## Tips for Using Performance Data
+
+<CardGroup cols={2}>
+  <Card title="Identify Patterns" icon="chart-line">
+    Look for signal types with consistent performance
+  </Card>
+  <Card title="Time Analysis" icon="clock">
+    Check if certain periods perform better
+  </Card>
+  <Card title="Compare Types" icon="arrows-left-right">
+    See which signal categories match your goals
+  </Card>
+  <Card title="Set Expectations" icon="target">
+    Use historical data to set realistic targets
+  </Card>
+</CardGroup>
+
+<Warning>
+  Past performance does not guarantee future results. Use this data for analysis, not as a guarantee of future returns.
+</Warning>

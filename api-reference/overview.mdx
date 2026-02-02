@@ -1,0 +1,100 @@
+---
+title: API Overview
+description: "Introduction to the Alpes Sniper API"
+---
+
+<Info>
+  API access requires the **Agent AI** subscription plan.
+</Info>
+
+## Introduction
+
+The Alpes Sniper API provides programmatic access to signals and performance data. Use it to integrate signals into your trading bots, custom dashboards, or automated systems.
+
+## Base URL
+
+```
+https://api.alpessniper.com/v1
+```
+
+## Features
+
+<CardGroup cols={2}>
+  <Card title="Real-Time Signals" icon="bolt">
+    Access signals as they're generated
+  </Card>
+  <Card title="Historical Data" icon="clock">
+    Query past signals and performance
+  </Card>
+  <Card title="Webhooks" icon="webhook">
+    Get notified when new signals arrive
+  </Card>
+  <Card title="Performance Metrics" icon="chart-line">
+    Access win rates and ROI data
+  </Card>
+</CardGroup>
+
+## Quick Start
+
+<Steps>
+  <Step title="Get API Key">
+    Subscribe to Agent AI plan and generate your API key in Profile settings
+  </Step>
+  <Step title="Authenticate">
+    Include your API key in request headers
+  </Step>
+  <Step title="Make Requests">
+    Call API endpoints to fetch signals and data
+  </Step>
+</Steps>
+
+## Example Request
+
+```bash
+curl -X GET "https://api.alpessniper.com/v1/signals" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+## Response Format
+
+All responses are JSON formatted:
+
+```json
+{
+  "success": true,
+  "data": [...],
+  "meta": {
+    "total": 100,
+    "page": 1,
+    "per_page": 20
+  }
+}
+```
+
+## Error Handling
+
+Errors return appropriate HTTP status codes:
+
+| Code | Meaning |
+|------|---------|
+| 200 | Success |
+| 400 | Bad Request - Invalid parameters |
+| 401 | Unauthorized - Invalid or missing API key |
+| 403 | Forbidden - Insufficient permissions |
+| 429 | Too Many Requests - Rate limit exceeded |
+| 500 | Server Error - Contact support |
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    Learn how to authenticate requests
+  </Card>
+  <Card title="Signals Endpoint" icon="signal" href="/api-reference/signals">
+    Fetch real-time and historical signals
+  </Card>
+  <Card title="Rate Limits" icon="gauge" href="/api-reference/rate-limits">
+    Understand API usage limits
+  </Card>
+</CardGroup>

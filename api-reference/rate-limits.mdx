@@ -1,0 +1,107 @@
+---
+title: Rate Limits
+description: "Understanding API rate limits and best practices"
+---
+
+## Rate Limit Overview
+
+To ensure fair usage and platform stability, the API enforces rate limits on all requests.
+
+## Current Limits
+
+| Plan | Requests per Minute | Requests per Day |
+|------|---------------------|------------------|
+| Agent AI | 60 | 10,000 |
+
+## Rate Limit Headers
+
+Every API response includes rate limit information in the headers:
+
+```
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 55
+X-RateLimit-Reset: 1640000000
+```
+
+| Header | Description |
+|--------|-------------|
+| `X-RateLimit-Limit` | Maximum requests per window |
+| `X-RateLimit-Remaining` | Requests remaining in current window |
+| `X-RateLimit-Reset` | Unix timestamp when the window resets |
+
+## Rate Limit Exceeded
+
+When you exceed the rate limit, the API returns a `429 Too Many Requests` response:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Too many requests. Please wait before retrying.",
+    "retry_after": 45
+  }
+}
+```
+
+The `retry_after` field indicates seconds until you can make another request.
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Use Caching" icon="database">
+    Cache responses locally to reduce API calls
+  </Card>
+  <Card title="Implement Backoff" icon="clock">
+    Use exponential backoff when rate limited
+  </Card>
+  <Card title="Batch Requests" icon="layer-group">
+    Use pagination efficiently instead of many small requests
+  </Card>
+  <Card title="Use Webhooks" icon="webhook">
+    Subscribe to webhooks for real-time updates instead of polling
+  </Card>
+</CardGroup>
+
+## Exponential Backoff Example
+
+```javascript
+async function fetchWithBackoff(url, options, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    const response = await fetch(url, options);
+
+    if (response.status !== 429) {
+      return response;
+    }
+
+    const retryAfter = response.headers.get('Retry-After') || Math.pow(2, i);
+    await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+  }
+
+  throw new Error('Max retries exceeded');
+}
+```
+
+## Webhook Alternative
+
+For real-time signal notifications, use webhooks instead of polling:
+
+```bash
+# Instead of polling every minute
+GET /v1/signals?since=...
+
+# Use webhooks for instant notifications
+POST /v1/webhooks
+{
+  "url": "https://your-server.com/signals",
+  "events": ["signal.new"]
+}
+```
+
+<Tip>
+  Webhooks don't count against your rate limit and provide faster notifications than polling.
+</Tip>
+
+## Need Higher Limits?
+
+Contact us if you need higher rate limits for your use case. We can discuss custom plans for high-volume applications.
