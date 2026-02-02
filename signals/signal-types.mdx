@@ -7,11 +7,21 @@ description: "Learn about the different types of signals on Alpes Sniper"
 
 Alpes Sniper provides signals through three main discovery methods, plus Premium signals for high-conviction opportunities.
 
+<Info>
+  **Important:** Each discovery method uses different criteria. Understanding these differences helps you choose signals that match your trading style.
+</Info>
+
 ---
 
 ## Signals by Engine
 
-Engine signals are based on **token age** - different time windows capture tokens at various stages of their lifecycle.
+Engine signals discover tokens by analyzing **market metrics** (age, volume, liquidity, holders).
+
+<Warning>
+  Smart Money data is used only to **enrich information** on these signals - it is NOT used to identify or select the tokens.
+</Warning>
+
+The discovery is based purely on token characteristics. After a token qualifies, we add Smart Money data to show if any tracked wallets hold it - this is informational context, not selection criteria.
 
 ### Token NEW
 
@@ -79,23 +89,45 @@ Established tokens with proven track record:
 
 ## Signals by Wallet
 
-### Smart Money Signals
+Wallet signals use a completely different approach - **Smart Money wallets are the source of discovery**.
 
-Signals generated when **our tracked** high-performance wallets interact with tokens.
+### How It Works
+
+<Steps>
+  <Step title="Wallet Monitoring">
+    We continuously monitor tracked Smart Money wallets in real-time
+  </Step>
+  <Step title="Swap Detection">
+    When a tracked wallet makes a buy or sell swap, we detect it
+  </Step>
+  <Step title="Filter Application">
+    The token goes through our filters for quality validation
+  </Step>
+  <Step title="Signal Publication">
+    **Only tokens that pass our filters become signals** - not every swap is published
+  </Step>
+</Steps>
+
+<Warning>
+  Not every Smart Money swap becomes a signal. We apply filters to select only the best opportunities.
+</Warning>
+
+### Why This Matters
 
 <CardGroup cols={2}>
-  <Card title="What It Tracks" icon="wallet">
-    Wallets with proven trading performance that we monitor
+  <Card title="Curated Quality" icon="filter">
+    Filters ensure you see quality opportunities, not every transaction
   </Card>
-  <Card title="Why It Matters" icon="brain">
-    Experienced traders often identify opportunities early
+  <Card title="Proven Traders" icon="wallet">
+    Tracked wallets have demonstrated trading performance
+  </Card>
+  <Card title="Real-Time" icon="bolt">
+    Swaps are detected and processed in real-time
+  </Card>
+  <Card title="Multiple Confirmation" icon="users">
+    Some tokens have backing from multiple tracked wallets
   </Card>
 </CardGroup>
-
-**Key features:**
-- Real-time wallet monitoring
-- Historical performance data on tracked wallets
-- Multiple wallet confirmation possible
 
 <Note>
   These are wallets **we** track based on performance. For tracking your **own** wallets, see [Wallet Tracking](/dashboard/wallet-tracking-feature).
@@ -147,14 +179,26 @@ Premium signals appear across all categories with a special badge.
 
 Wallet Tracking lets you monitor up to **5 wallets** of your choice:
 - You choose which wallets to track
-- System monitors every **60 seconds**
+- System monitors in **near real-time**
 - Alerts you on buy/sell swaps
+- No filters applied - you see all activity
 
 **See:** [Wallet Tracking Feature](/dashboard/wallet-tracking-feature)
 
 ---
 
-## Signal Comparison
+## Comparison Summary
+
+| Aspect | Signals by Engine | Signals by Wallet |
+|--------|-------------------|-------------------|
+| **Discovery source** | Market metrics | Smart Money activity |
+| **Smart Money role** | Informational only | Primary selection |
+| **Filters applied** | Market-based | Wallet + quality filters |
+| **Every activity = signal?** | N/A | No, must pass filters |
+
+---
+
+## Signal Comparison by Category
 
 | Type | Token Age | Risk Level | Typical Volume |
 |------|-----------|------------|----------------|

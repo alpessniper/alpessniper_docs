@@ -7,23 +7,60 @@ description: "Learn what signals are and how to interpret them"
 
 A **signal** is an alert that a token has met certain criteria indicating potential trading opportunity. Alpes Sniper continuously monitors the Solana blockchain and delivers signals when tokens qualify based on our analysis.
 
+## Two Discovery Methods
+
+<CardGroup cols={2}>
+  <Card title="Signals by Engine" icon="gear">
+    Tokens discovered by analyzing market metrics (age, volume, liquidity, holders). Smart Money data is used only to **enrich information**, not to identify the token.
+  </Card>
+  <Card title="Signals by Wallet" icon="wallet">
+    Tokens discovered by monitoring Smart Money wallets. We detect buy/sell swaps and apply filters - only tokens that **pass our filters** become signals.
+  </Card>
+</CardGroup>
+
+<Info>
+  **Key difference:** Engine signals find tokens first, then add Smart Money data. Wallet signals start from Smart Money activity and filter from there.
+</Info>
+
 ## Signal Lifecycle
+
+### Signals by Engine
 
 <Steps>
   <Step title="Discovery">
-    Our system detects a token that meets initial criteria
+    System scans blockchain for tokens matching market criteria
   </Step>
   <Step title="Validation">
-    The token passes through multiple validation layers
+    Token passes through multiple validation layers
+  </Step>
+  <Step title="Data Enrichment">
+    Smart Money data is added for additional context (not used for discovery)
   </Step>
   <Step title="Signal Generation">
-    A signal is created with entry metrics captured
+    Signal is created with entry metrics captured
   </Step>
   <Step title="Delivery">
     Signal appears on your dashboard in real-time
   </Step>
-  <Step title="Tracking">
-    Performance is tracked and ATH (All-Time High) recorded
+</Steps>
+
+### Signals by Wallet
+
+<Steps>
+  <Step title="Wallet Monitoring">
+    System monitors tracked Smart Money wallets in real-time
+  </Step>
+  <Step title="Swap Detection">
+    Buy or sell swap is detected from a tracked wallet
+  </Step>
+  <Step title="Filter Application">
+    Token must pass our filters to qualify as a signal
+  </Step>
+  <Step title="Signal Generation">
+    Only tokens that pass filters become signals
+  </Step>
+  <Step title="Delivery">
+    Signal appears on your dashboard in real-time
   </Step>
 </Steps>
 
@@ -88,6 +125,13 @@ Presence of verified social channels (Twitter, Telegram, Discord, Website) can i
 <Warning>
   Social presence alone doesn't guarantee legitimacy. Always do your own research.
 </Warning>
+
+### Smart Money Backing (Engine Signals)
+
+For Engine signals, we show if Smart Money wallets hold the token:
+- This is **informational only** - not used for signal discovery
+- Shows number of tracked wallets holding
+- Adds confidence but is not the selection criteria
 
 ## Performance Tracking
 
