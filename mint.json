@@ -4,8 +4,8 @@
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png",
-    "width": 150,
-    "height": 50
+    "width": 220,
+    "height": 70
   },
   "favicon": "/favicon.png",
   "colors": {
