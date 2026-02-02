@@ -71,6 +71,7 @@
         "dashboard/new-tokens",
         "dashboard/high-volume",
         "dashboard/wallet-tracking",
+        "dashboard/wallet-tracking-feature",
         "dashboard/performance",
         "dashboard/hall-of-fame"
       ]
