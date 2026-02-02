@@ -43,5 +43,5 @@ Found a typo or want to improve the docs? Feel free to submit a PR!
 
 ## 📞 Support
 
-- [Discord Community](https://discord.gg/alpessniper)
+- [Discord Community](https://discord.gg/hdNZNxrfep)
 - [Twitter](https://twitter.com/alpessniper)

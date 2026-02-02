@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Alpes Sniper",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -39,7 +39,7 @@
     {
       "name": "Discord Community",
       "icon": "discord",
-      "url": "https://discord.gg/alpessniper"
+      "url": "https://discord.gg/hdNZNxrfep"
     },
     {
       "name": "Twitter",
@@ -97,6 +97,6 @@
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/alpessniper",
-    "discord": "https://discord.gg/alpessniper"
+    "discord": "https://discord.gg/hdNZNxrfep"
   }
 }
