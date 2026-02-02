@@ -3,7 +3,9 @@
   "name": "Alpes Sniper",
   "logo": {
     "dark": "/logo/dark.png",
-    "light": "/logo/light.png"
+    "light": "/logo/light.png",
+    "width": 150,
+    "height": 50
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -18,12 +20,12 @@
   "topbarLinks": [
     {
       "name": "Dashboard",
-      "url": "https://app.alpessniper.com"
+      "url": "https://app.alpessniper.io"
     }
   ],
   "topbarCtaButton": {
     "name": "Get Started",
-    "url": "https://app.alpessniper.com/pricing"
+    "url": "https://app.alpessniper.io/pricing"
   },
   "tabs": [
     {
