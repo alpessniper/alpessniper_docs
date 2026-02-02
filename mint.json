@@ -1,7 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Alpes Sniper",
-  "theme": "almond",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
