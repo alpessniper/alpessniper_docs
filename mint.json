@@ -3,9 +3,7 @@
   "name": "Alpes Sniper",
   "logo": {
     "dark": "/logo/dark.png",
-    "light": "/logo/light.png",
-    "width": 220,
-    "height": 70
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
